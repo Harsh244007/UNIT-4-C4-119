@@ -3,8 +3,7 @@ const app = express();
 app.use(express.json());
 
 const todoController = require("./controller/todo.controller");
-const loginController = require("./controller/login.controller");
-const registerController = require("./controller/register.controller");
+const {registerController, loginController} = require("./controller/auth.controller");
 
 
 app.use("/todos", todoController)
