@@ -28,3 +28,24 @@ router.get("/:id", async(req,res)=>{
         return res.status(400).send({error:error.message});
     }
 });
+
+
+router.patch("/:id",async(req,res)=>{
+    try {
+        const todos = await Todo.findByIdAndUpdate(req.params.id, req.body,{new:true});
+        return res.status(200).send({todos:todos});
+    } catch (error) {
+        return res.status(400).send({error:error.message});
+    }
+});
+
+router.delete("/:id",async(req,res)=>{
+    try {
+        const todos = await Todo.findByIdAndDelete(req.params.id, req.body);
+        return res.status(201).send({todos:todos});
+    } catch (error) {
+        return res.status(400).send({error:error.message});
+    }
+});
+
+module.exports = router;
